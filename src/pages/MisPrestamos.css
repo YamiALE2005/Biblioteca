@@ -1,0 +1,67 @@
+
+@import './Catalogo.css';
+
+/* MIS PRÉSTAMOS */
+.biblioteca-prestamos {
+  min-height: 100vh; background: white; color: #0e2749;
+  font-family: Arial, sans-serif;
+}
+
+.biblioteca-prestamos, .biblioteca-prestamos * { box-sizing: border-box; }
+.biblioteca-prestamos__contenido { max-width: 1300px; margin: auto; padding: 50px 35px; }
+
+.biblioteca-prestamos__titulo {
+  display: flex; align-items: center; gap: 35px; margin-bottom: 35px;
+}
+.biblioteca-prestamos__titulo img { width: 175px; height: 175px; object-fit: contain; }
+.biblioteca-prestamos__titulo h1 { font-size: 46px; margin: 0 0 10px; color: #111; }
+.biblioteca-prestamos__titulo p { font-size: 23px; margin: 0; color: #333; }
+
+.biblioteca-prestamos__tabla { display: flex; flex-direction: column; gap: 5px; }
+
+.biblioteca-prestamos__fila {
+  display: grid; grid-template-columns: 2fr 1.2fr 1fr .8fr;
+  gap: 20px; align-items: center; min-height: 175px;
+  padding: 22px 30px; border-radius: 12px;
+  background: #f5f7fb; font-size: 20px;
+}
+
+.biblioteca-prestamos__cabecera {
+  min-height: 95px; background: #e6efff;
+  font-weight: bold; font-size: 19px;
+}
+
+.biblioteca-prestamos__libro { display: flex; align-items: center; gap: 20px; }
+.biblioteca-prestamos__libro img { width: 95px; height: 135px; object-fit: contain; }
+.biblioteca-prestamos__libro h2 { font-size: 23px; margin: 0 0 12px; }
+.biblioteca-prestamos__libro p { font-size: 16px; margin: 0; }
+
+.biblioteca-prestamos__estado {
+  padding: 12px; border-radius: 10px; text-align: center;
+  font-size: 18px; font-weight: bold;
+}
+
+.biblioteca-prestamos__estado.activo { background: #c5f3d7; color: #185b36; }
+.biblioteca-prestamos__estado.devuelto { background: #dfe4eb; color: #414b59; }
+.biblioteca-prestamos__mensaje { padding: 30px; text-align: center; font-size: 20px; }
+
+@media (max-width: 800px) {
+  .biblioteca-prestamos__titulo img { width: 100px; height: 100px; }
+  .biblioteca-prestamos__titulo h1 { font-size: 30px; }
+  .biblioteca-prestamos__titulo p { font-size: 16px; }
+
+  .biblioteca-prestamos__fila {
+    grid-template-columns: 1fr 1fr; gap: 15px;
+    padding: 20px; font-size: 16px;
+  }
+  .biblioteca-prestamos__cabecera { display: none; }
+  .biblioteca-prestamos__libro { grid-column: 1 / -1; }
+  .biblioteca-prestamos__libro h2 { font-size: 20px; }
+}
+
+@media (max-width: 500px) {
+  .biblioteca-prestamos__contenido { padding: 25px 15px; }
+  .biblioteca-prestamos__titulo { gap: 12px; }
+  .biblioteca-prestamos__titulo img { width: 70px; height: 70px; }
+  .biblioteca-prestamos__titulo h1 { font-size: 25px; }
+}

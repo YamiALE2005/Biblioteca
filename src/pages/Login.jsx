@@ -1,99 +1,125 @@
-import { useState, useEffect } from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { apiRequest } from '../services/api';
+import './Login.css';
 
 const Login = () => {
-    const usenavigate = useNavigate();
-    const [formData, setFormData] = useState({
-        nombre: '',
-        matricula: '',
-        carrera: 'Ingeniería en Desarrollo y Gestión de Software'
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const [mostrarPassword, setMostrarPassword] = useState(false);
+  const [cargando, setCargando] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
     });
+  };
 
-    // Redirigir al dashboard si la sesión ya existe
-    useEffect(() => {
-        const sessionExistente = sessionStorage.getItem('sesion_estadia');
-        console.log(sessionExistente);
-        if (sessionExistente){
-            navigate('/dashboard')
-        }
-    }, []);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleChange = (e) => {
-        setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
-        });
-    };
+    try {
+      setCargando(true);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!formData.nombre || !formData.matricula) {
-        alert('Por favor complete los campos obligatorios');
-        return;
-        }
+      const datos = await apiRequest('/api/auth/login', {
+        method: 'POST',
+        body: JSON.stringify(formData)
+      });
 
-        const payload = {
-        ...formData,
-        proyecto: '',
-        empresa: '',
-        fechaIngreso: new Date().toLocaleTimeString()
-        };
-        console.log(payload)
-        sessionStorage.setItem('sesion_estadia', JSON.stringify(payload));
-        navigate('/dashboard')
+      localStorage.setItem('token', datos.token);
+      localStorage.setItem('usuario', JSON.stringify(datos.user));
 
-    };
+      navigate('/catalogo');
 
-    return (
-        <div style={styles.container}>
-        <form onSubmit={handleSubmit} style={styles.card}>
-            <h2 style={styles.title}>Acceso a Estadías UTR</h2>
-            <div style={styles.group}>
-            <label>Nombre Completo:</label>
-            <input 
-                type="text" 
-                name="nombre" 
-                value={formData.nombre} 
-                onChange={handleChange} 
-                style={styles.input}
-                placeholder="Ej. Juan Pérez"
-                required 
-            />
-            </div>
-            <div style={styles.group}>
-            <label>Matrícula:</label>
-            <input 
-                type="text" 
-                name="matricula" 
-                value={formData.matricula} 
-                onChange={handleChange} 
-                style={styles.input}
-                placeholder="Ej. 21000123"
-                required 
-            />
-            </div>
-            <div style={styles.group}>
-            <label>Carrera:</label>
-            <input 
-                type="text" 
-                name="carrera" 
-                value={formData.carrera} 
-                disabled 
-                style={{ ...styles.input, backgroundColor: '#f1f5f9' }} 
-            />
-            </div>
-            <button type="submit" style={styles.button}>Iniciar Sesión</button>
-        </form>
-        </div>
-    );
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setCargando(false);
     }
-    const styles = {
-    container: { display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' },
-    card: { background: '#fff', padding: '2rem', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)', width: '100%', maxWidth: '400px' },
-    title: { marginBottom: '1.5rem', textAlign: 'center', color: '#1e293b' },
-    group: { marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '0.3rem' },
-    input: { padding: '0.6rem', borderRadius: '4px', border: '1px solid #cbd5e1', fontSize: '0.9rem' },
-    button: { width: '100%', padding: '0.75rem', background: '#0284c7', color: '#fff', border: 'none', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer', marginTop: '1rem' }
-    };
+  };
 
-    export default Login;
+  return (
+    <main className="biblioteca-login">
+      <section className="biblioteca-login__tarjeta">
+
+        <img
+          className="biblioteca-login__logo"
+          src="/images/logo-libro.png"
+          alt="Logo Biblioteca Universitaria"
+        />
+
+        <h1>Biblioteca Universitaria</h1>
+
+        <p className="biblioteca-login__subtitulo">
+          Inicia sesión en tu cuenta
+        </p>
+
+        <form
+          className="biblioteca-login__formulario"
+          onSubmit={handleSubmit}
+        >
+          <label className="biblioteca-login__campo">
+            <img src="/images/icono-correo.svg" alt="" />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label className="biblioteca-login__campo">
+            <img src="/images/icono-candado.svg" alt="" />
+
+            <input
+              type={mostrarPassword ? 'text' : 'password'}
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+
+            <button
+              type="button"
+              className="biblioteca-login__ojo"
+              onClick={() => setMostrarPassword(!mostrarPassword)}
+            >
+              <img
+                src={mostrarPassword
+                  ? '/images/icono-ocultar.svg'
+                  : '/images/icono-ojo.svg'}
+                alt="Mostrar u ocultar contraseña"
+              />
+            </button>
+          </label>
+
+          <button
+            type="submit"
+            className="biblioteca-login__enviar"
+            disabled={cargando}
+          >
+            {cargando ? 'Ingresando...' : 'Iniciar sesión'}
+          </button>
+        </form>
+
+        <p className="biblioteca-login__registro">
+          ¿No tienes una cuenta?{' '}
+          <Link to="/registro">Regístrate</Link>
+        </p>
+
+      </section>
+    </main>
+  );
+};
+
+export default Login;

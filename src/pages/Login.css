@@ -1,0 +1,165 @@
+/* Login de Biblioteca Universitaria. Basado en el diseño de Figma 1440 x 1024. */
+.biblioteca-login {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 48px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eaf3ff url('/images/login-bg.png') center / cover no-repeat;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.biblioteca-login *,
+.biblioteca-login *::before,
+.biblioteca-login *::after {
+  box-sizing: border-box;
+}
+
+.biblioteca-login__tarjeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(1090px, 100%);
+  padding: 22px 50px 32px;
+  border-radius: 67px;
+  background: white;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 16%);
+  color: #12264a;
+}
+
+.biblioteca-login__logo {
+  display: block;
+  width: 215px;
+  height: 190px;
+  object-fit: contain;
+}
+
+.biblioteca-login__tarjeta h1 {
+  margin: 0;
+  font-size: clamp(29px, 3.5vw, 48px);
+  line-height: 1.12;
+  text-align: center;
+  font-weight: 700;
+}
+
+.biblioteca-login__subtitulo {
+  margin: 16px 0 28px;
+  font-size: clamp(18px, 2vw, 26px);
+  color: #23334d;
+  text-align: center;
+}
+
+.biblioteca-login__formulario {
+  width: min(760px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.biblioteca-login__campo {
+  display: flex;
+  align-items: center;
+  height: 63px;
+  border: 1.5px solid #2a46c6;
+  border-radius: 10px;
+  padding: 0 14px;
+  gap: 15px;
+  background: white;
+}
+
+.biblioteca-login__campo > img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.biblioteca-login__campo input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: 22px;
+  color: #162847;
+}
+
+.biblioteca-login__campo input::placeholder {
+  color: #303744;
+  opacity: 1;
+}
+
+.biblioteca-login__campo:focus-within {
+  outline: 3px solid #8fb8ff;
+  outline-offset: 1px;
+}
+
+.biblioteca-login__ojo {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.biblioteca-login__ojo img {
+  width: 28px;
+  height: 28px;
+}
+
+.biblioteca-login__enviar {
+  align-self: center;
+  width: min(676px, 100%);
+  height: 68px;
+  margin-top: 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #284089;
+  color: white;
+  font: inherit;
+  font-size: 25px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.biblioteca-login__enviar:hover { background: #1d3376; }
+.biblioteca-login__enviar:focus-visible { outline: 3px solid #5a91ff; outline-offset: 3px; }
+
+.biblioteca-login__mensaje {
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  color: #235191;
+}
+
+.biblioteca-login__registro {
+  margin: 25px 0 0;
+  font-size: clamp(15px, 2vw, 23px);
+  text-align: center;
+  color: #1e293b;
+}
+
+.biblioteca-login__registro a {
+  color: #1a6fee;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.biblioteca-login__registro a:hover { text-decoration: underline; }
+
+@media (max-width: 680px) {
+  .biblioteca-login { padding: 20px 12px; }
+  .biblioteca-login__tarjeta { border-radius: 26px; padding: 22px 20px 32px; }
+  .biblioteca-login__logo { width: 144px; height: 130px; }
+  .biblioteca-login__subtitulo { margin-bottom: 24px; }
+  .biblioteca-login__campo { height: 56px; }
+  .biblioteca-login__campo input { font-size: 17px; }
+  .biblioteca-login__enviar { height: 58px; font-size: 19px; }
+}

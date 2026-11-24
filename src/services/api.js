@@ -1,36 +1,24 @@
-
 const API_URL = import.meta.env.VITE_API_BASE_URL;
-const APP_TOKEN = import.meta.env.VITE_API_APP_TOKEN;
+const API_TOKEN = import.meta.env.VITE_API_APP_TOKEN;
 
-export const apiFetch = async (endpoint, options = {}) => {
-  const token = localStorage.getItem("token");
+export const apiRequest = async (ruta, opciones = {}) => {
+  const token = localStorage.getItem('token');
 
-  const response = await fetch(`${API_URL}${endpoint}`, {
-    ...options,
+  const respuesta = await fetch(`${API_URL}${ruta}`, {
+    ...opciones,
     headers: {
-      "Content-Type": "application/json",
-      "x-api-token": APP_TOKEN,
-      ...(token && {
-        Authorization: `Bearer ${token}`,
-      }),
-      ...options.headers,
-    },
+      'Content-Type': 'application/json',
+      'x-api-token': API_TOKEN,
+      ...(token && { Authorization: `Bearer ${token}` }),
+      ...opciones.headers
+    }
   });
 
-  if (response.status === 401) {
-    localStorage.removeItem("token");
-    localStorage.removeItem("rol");
-    window.location.href = "/login";
-    throw new Error("Sesión no autorizada");
+  const datos = await respuesta.json();
+
+  if (!respuesta.ok) {
+    throw new Error(datos.message || 'Error al conectar con la API');
   }
 
-  if (response.status === 403) {
-    throw new Error("Acceso restringido");
-  }
-
-  if (!response.ok) {
-    throw new Error(`Error HTTP: ${response.status}`);
-  }
-
-  return response.json();
+  return datos;
 };
