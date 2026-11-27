@@ -1,0 +1,276 @@
+
+.perfil-pagina {
+  min-height: 100vh;
+  padding: 35px 24px;
+  background: linear-gradient(135deg, #eef4ff, #f8fbff);
+  color: #182b49;
+  font-family: Arial, sans-serif;
+}
+
+.perfil-contenedor {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.perfil-navegacion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.perfil-volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #2459a7;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.perfil-volver:hover {
+  color: #12356d;
+}
+
+.perfil-marca {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #345b96;
+  font-weight: 700;
+}
+
+.perfil-encabezado {
+  margin-bottom: 25px;
+}
+
+.perfil-encabezado h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  color: #142d54;
+}
+
+.perfil-encabezado p {
+  margin: 0;
+  color: #738198;
+}
+
+.perfil-tarjeta {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e3eaf4;
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(24, 55, 104, 0.08);
+}
+
+.perfil-portada {
+  height: 115px;
+  background: linear-gradient(110deg, #0d326e, #2468bf);
+}
+
+.perfil-identidad {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 0 35px 30px;
+  margin-top: -37px;
+}
+
+.perfil-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  background: #e4efff;
+  color: #20559d;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.perfil-nombre {
+  padding-top: 40px;
+}
+
+.perfil-nombre h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  color: #142d54;
+}
+
+.perfil-rol {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #edf3ff;
+  color: #2b5fa8;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.perfil-rol.admin {
+  background: #e7f5eb;
+  color: #238047;
+}
+
+.perfil-informacion {
+  padding: 10px 35px 35px;
+}
+
+.perfil-informacion h3 {
+  margin: 0 0 25px;
+  font-size: 19px;
+  color: #1d3558;
+}
+
+.perfil-campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.perfil-campo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px;
+  border: 1px solid #e8edf5;
+  border-radius: 12px;
+  background: #fafcff;
+  min-width: 0;
+}
+
+.perfil-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 43px;
+  height: 43px;
+  background: #e7f0ff;
+  border-radius: 10px;
+  color: #2563b5;
+}
+
+.perfil-campo span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #7a8799;
+}
+
+.perfil-campo strong {
+  display: block;
+  font-size: 14px;
+  color: #203554;
+  overflow-wrap: anywhere;
+}
+
+.perfil-administracion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 35px 35px;
+  padding: 24px;
+  background: #edf5ff;
+  border: 1px solid #d6e7ff;
+  border-radius: 14px;
+}
+
+.perfil-admin-texto {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.perfil-admin-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 53px;
+  height: 53px;
+  background: #dceaff;
+  color: #1754a1;
+  border-radius: 12px;
+}
+
+.perfil-admin-texto h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+  color: #143b70;
+}
+
+.perfil-admin-texto p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #617795;
+}
+
+.perfil-admin-boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 13px 18px;
+  background: #1554aa;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 9px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.perfil-admin-boton:hover {
+  background: #103d80;
+  transform: translateY(-2px);
+}
+
+.perfil-pie {
+  margin-top: 28px;
+  text-align: center;
+  color: #92a0b2;
+  font-size: 12px;
+}
+
+@media (max-width: 650px) {
+  .perfil-pagina {
+    padding: 22px 14px;
+  }
+
+  .perfil-marca {
+    display: none;
+  }
+
+  .perfil-identidad {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .perfil-informacion {
+    padding: 10px 22px 25px;
+  }
+
+  .perfil-campos {
+    grid-template-columns: 1fr;
+  }
+
+  .perfil-administracion {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 22px 25px;
+  }
+
+  .perfil-admin-boton {
+    width: 100%;
+  }
+}
