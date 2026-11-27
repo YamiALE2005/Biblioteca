@@ -1,0 +1,262 @@
+
+/* Estructura principal */
+html, body, #root { margin: 0; min-height: 100%; }
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f8fc;
+  font-family: Arial, sans-serif;
+}
+.admin-layout * { box-sizing: border-box; }
+
+.admin-menu {
+  width: 210px;
+  flex-shrink: 0;
+  background: #06244b;
+  color: white;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.admin-menu a, .admin-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+.admin-menu .activo, .admin-menu a:hover { background: #287cda; }
+.admin-menu button { margin-top: auto; }
+
+.admin-main { flex: 1; min-width: 0; padding: 20px; }
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #071b40;
+  margin-bottom: 20px;
+}
+.admin-header h2, .admin-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.admin-header h2 { font-size: 22px; margin: 0; }
+.admin-user { font-weight: bold; }
+
+.admin-tabs { display: flex; gap: 5px; margin-bottom: 12px; }
+.admin-tabs button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 13px;
+  border: 0;
+  border-radius: 8px;
+  background: #e9eef5;
+  color: #071b40;
+  font-weight: bold;
+  cursor: pointer;
+}
+.admin-tabs .activo { background: #063e7d; color: white; }
+
+.admin-panel {
+  background: white;
+  padding: 22px;
+  border: 1px solid #d9e3f0;
+  border-radius: 10px;
+  color: #071b40;
+}
+.admin-panel h3 { margin: 0 0 5px; }
+.admin-panel p { margin: 0 0 12px; }
+
+/* Registrar / Editar Libro */
+.libros-admin {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 12px;
+}
+.form-libros {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+.form-libros label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 13px;
+}
+.form-libros input, .libro-seleccionado select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #cbd7e6;
+  border-radius: 6px;
+  background: white;
+}
+.botones-libros { display: flex; gap: 12px; margin-top: 20px; }
+.botones-libros button, .libro-seleccionado button {
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 7px;
+  background: #063e7d;
+  color: white;
+  cursor: pointer;
+}
+.botones-libros button:disabled { opacity: .5; cursor: not-allowed; }
+.libro-vista { text-align: center; padding: 28px 10px; }
+.libro-vista span { font-size: 55px; }
+
+/* Préstamos Activos */
+.prestamos-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.prestamos-encabezado input, .prestamos-tabla input {
+  padding: 10px;
+  border: 1px solid #cbd7e6;
+  border-radius: 7px;
+  background: white;
+  max-width: 250px;
+}
+.prestamos-tabla { width: 100%; overflow-x: auto; }
+.prestamos-tabla table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.prestamos-tabla th, .prestamos-tabla td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5eaf1;
+}
+.prestamos-tabla th {
+  background: #063e7d;
+  color: white;
+}
+.prestamos-tabla tbody tr:nth-child(even) { background: #f7f9fc; }
+.estado-prestamo {
+  display: inline-block;
+  background: #c7edff;
+  color: #063e7d;
+  padding: 6px 10px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+.prestamos-tabla button {
+  background: #063e7d;
+  color: white;
+  padding: 9px 13px;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.prestamos-tabla button:disabled { opacity: .5; }
+
+@media (max-width: 850px) {
+  .libros-admin { grid-template-columns: 1fr; }
+  .form-libros { grid-template-columns: 1fr; }
+  .prestamos-encabezado { flex-direction: column; align-items: stretch; }
+}
+
+/* Gestión de Usuarios */
+
+.usuarios-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.usuarios-encabezado h3,
+.usuarios-buscador {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.usuarios-buscador {
+  border: 1px solid #cbd7e6;
+  border-radius: 7px;
+  padding: 9px;
+}
+
+.usuarios-buscador input {
+  border: none;
+  outline: none;
+  width: 220px;
+}
+
+.usuarios-tabla { overflow-x: auto; }
+
+.usuarios-tabla table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.usuarios-tabla th,
+.usuarios-tabla td {
+  padding: 13px;
+  text-align: left;
+  border-bottom: 1px solid #e5eaf1;
+}
+
+.usuarios-tabla th {
+  background: #063e7d;
+  color: white;
+}
+
+.usuarios-tabla select {
+  padding: 7px;
+  border: 1px solid #cbd7e6;
+  border-radius: 6px;
+}
+
+.usuario-activo,
+.usuario-inactivo {
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.usuario-activo {
+  background: #d7f5df;
+  color: green;
+}
+
+.usuario-inactivo {
+  background: #eee;
+  color: #777;
+}
+
+@media (max-width: 850px) {
+  .usuarios-encabezado {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
